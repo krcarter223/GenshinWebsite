@@ -1,0 +1,56 @@
+body {
+    background-color: #2A0134;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+.pill-nav a {
+    display: inline-block;
+    color: #e4dae6;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5px;
+    margin:
+}
+.pill-nav a.active {
+    background-color: #082473;
+    color: #e4dae6;
+}
+.pill-nav a:hover {
+    background-color:  #082473;
+    color: #e4dae6;
+}
+p {
+    font-size: 160%;
+    text-align: center;
+}
+b {
+    font-size: 200%;
+    font-family:verdana;
+}
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 70%;
+    left: 10%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  }
+
+  .responsive-iframe {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 70%;
+    height: 70%;
+  }
+  .box {
+    position: relative;
+    overflow: auto;
+  }
