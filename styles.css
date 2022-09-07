@@ -87,7 +87,7 @@ z{
   }
   span{
     position: absolute;
-    color: red;
+    color: white;
     /*left: 170%;
     bottom: -60%;*/
     font-size: 30px;
@@ -103,7 +103,7 @@ z{
   }
   .calculate:hover {
     background-color:white;
-    color:white;
+    color:red;
     font-size: 50px;
     border: none;
   }
