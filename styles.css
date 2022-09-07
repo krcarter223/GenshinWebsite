@@ -84,11 +84,11 @@ z{
   .Questions{
     font-size: 160%;
     text-align: center;
-      color: #006bd7F1;
+      color: white;
   }
   span{
     position: absolute;
-    color: #00add7;
+    color: #C6D5E0;
     /*left: 170%;
     bottom: -60%;*/
     font-size: 30px;
