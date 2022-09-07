@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+        <script>
+          /*
+          cHECK FOR THE FIRST BUTTONs which one was picked ER or particles
+          then have an if statement that says if the first one was picked
+          then collect the data from the neccesary
+          */
+         const choices = ["","","","","","","","",""];
+         const QID = ["1", "2", "3", "4", "5", "6", "7", "8"]
+         const QL = [3, 7, 2, 1, 2, 4, 1, 1]
+         const test = ["0", "0", "0"]
+         const partname = ["On-field/Same type", "Off-field/Same type","On-field/Different type","Off-field/Different type","On-field/Generic","Off-field/Generic"]
+         const part = [2.7, 2.4, .9, .8, 1.8, 1.6]
+          function Select(clicked_id)
+          {
+            const btn = document.getElementById(clicked_id);
+            if (btn.style.backgroundColor=='salmon')
+            {
+              btn.style.backgroundColor = "#2A0134";
+              let clearer = clicked_id.split(' ')[0];
+              let clearerer = parseInt(clearer) - 1;
+              //document.querySelector('#feedback1').innerHTML = clearer + " " + choices[clearer] + " " + clearerer;
+              choices[clearerer] = "";
+            }
+            else{
+              for (let i=0; i < QID.length; i++){
+                  if (clicked_id.split(' ')[0] == QID[i])
+                  {
+                    choices[i] = clicked_id.split(' ')[1];
+                    //document.querySelector('#feedback1').innerHTML = choices[0] + " " + choices[1];
+                    for (let j = 0; j < QL[i];j++){
+                        let temp = j + 1
+                        let secondpart = temp.toString();
+                        //test[j] = secondpart
+                        //document.querySelector('#feedback1').innerHTML = QID[i] + " " + secondpart;
+                        const notbtn = document.getElementById(QID[i] + " " + secondpart);
+                        notbtn.style.backgroundColor = "#2A0134";
+                        //document.querySelector('#feedback1').innerHTML = choices;
+                      }
+                      if (clicked_id.split(' ')[0] == 1){
+                        //namig scheme is based on which button does not utilize them
+                        const element11 = document.getElementById("q7");
+                        const element21 = document.getElementById("q6");
+                        const element22 = document.getElementById("q5");
+                        const element31 = document.getElementById("q8");
+                        const element23 = document.getElementById("q3");
+                        const element24 = document.getElementById("q4");
+                        switch(choices[0]){
+                          case "1":
+                            /*for (let j = 1; j < 5; j++){
+                              let elementT = document.getElementById("6 " + j.toString() + " t");
+                              elementT.style.display = "block";
+                            }*/
+                            element22.style.display = "block";
+                            element21.style.display = "block";
+                            element31.style.display = "block";
+                            element23.style.display = "block";
+                            element24.style.display = "block";
+                            element11.style.display = "none";
+                            break;
+                          case "2":
+                            /*for (let j = 1; j < 5; j++){
+                              let elementT = document.getElementById("6 " + j.toString() + " t");
+                              elementT.style.display = "none";
+                            }*/
+                            element11.style.display = "block";
+                            element31.style.display = "block";
+                            element23.style.display = "none";
+                            element24.style.display = "none";
+                            element21.style.display = "none";
+                            element22.style.display = "none";
+                            break;
+                          case "3":
+                            element22.style.display = "block";
+                            element21.style.display = "block";
+                            element11.style.display = "block";
+                            element23.style.display = "block";
+                            element24.style.display = "block";
+                            element31.style.display = "none";
+                            break;
+                        }
+                      }
+                      if (clicked_id.split(' ')[0] == 3){
+                        if(choices[2] == "2"){
+                          const Electro = document.getElementById("q4");
+                          Electro.style.display = "none";
+                        }
+                        else{
+                          const ElectroYes = document.getElementById("q4");
+                          ElectroYes.style.display = "block";
+                        }
+                      }
+                    }
+                    btn.style.backgroundColor = 'salmon';
+                  }
+            }
+          };
+          function CheckText(){
+            // HOW TO DO THE THING const response = document.getElementById("8 1 t").value;
+            var unanswered = [];
+            let calculate = 0;
+            let partcheck = [];
+            let calcpart = [];
+            let something = 0;
+            let partgen = [0,0,0];
+            for(let i = 0; i < 4; i++)
+            {
+              switch(i){
+                case i = 0:
+                  choices[3] = document.getElementById("4 1 t").value;
+                  break;
+                case i = 1:
+                  if (choices[5] != "")
+                  {
+                    choices[6] = document.getElementById("6 " + choices[5] + " t").value;
+                  }
+                  else{
+                    choices[6] = ""
+                  }
+                  break;
+                case i = 2:
+                  choices[7] = document.getElementById("7 1 t").value;
+                  break;
+                case i = 3:
+                choices[8] = document.getElementById("8 1 t").value;
+                  break;
+              }
+            }
+            for (let i = 0; i < choices.length; i++)
+            {
+              let tempnum;
+              if (i < 6){
+                tempnum = i+1;
+              }
+              else{
+                tempnum = i;
+              }
+              let thing = "q" + tempnum.toString();
+              let divcheck = document.getElementById(thing);
+              if (choices[i] == "" && divcheck.style.display != "none")
+              {
+                if(i == 6)
+                {
+                  unanswered.push(" 6 Text");
+                }
+                else if (i <= 5){
+                  var temp = i + 1;
+                  unanswered.push(" " + temp);
+                }
+                else{
+                  unanswered.push(" " + i);
+                }
+              }
+            }
+            if(choices[5] == "4"){
+              partcheck.push(choices[6].split(',')[0]);
+              partcheck.push(choices[6].split(',')[1]);
+              partcheck.push(choices[6].split(',')[2]);
+              for(let i = 0; i < 3; i++){
+                if (isNaN(partcheck[i]) || partcheck[i]== ""){
+                  unanswered.push("Incorrect format on question 6 please use this format #,#,#.")
+                  i = 6;
+                }
+              }
+            }
+            if (unanswered.length != 0)
+            {
+              document.querySelector('#feedback1').innerHTML = "Please answer questions " + unanswered;
+              document.querySelector('#feedback2').innerHTML = "Please answer questions " + unanswered;
+              return;
+            }
+            if (choices[5] != "4"){
+              partgen = [];
+              partgen.push(parseInt(choices[6]));
+            }
+            else{
+              for(let i = 0 ; i < partcheck.length; i++)
+              {
+                partgen[i] = (parseInt(partcheck[i]));
+              }
+            }
+            if(choices[4] == "1"){
+              switch(choices[5]){
+                case "1":
+                  calcpart.push(part[0]);
+                  break;
+                case "2":
+                  calcpart.push(part[2]);
+                  break;
+                case "3":
+                  calcpart.push(part[4]);
+                  break;
+                default:
+                  calcpart.push(part[0]);
+                  calcpart.push(part[2]);
+                  calcpart.push(part[4]);
+              }
+            }
+            else{
+              switch(choices[5]){
+                case "1":
+                  calcpart.push(part[1]);
+                  break;
+                case "2":
+                  calcpart.push(part[3]);
+                  break;
+                case "3":
+                  calcpart.push(part[5]);
+                  break;
+                default:
+                  calcpart.push(part[1]);
+                  calcpart.push(part[3]);
+                  calcpart.push(part[5]);
+              }
+            }
+            for(let i = 0; i < partgen.length; i++)
+              {
+                something = partgen[i]*calcpart[i]+something;
+              }
+            switch(choices[0]){
+              case "1":
+                if (choices[1] == "7" && choices[2] == "1"){
+                  if(choices[4] == "1"){
+                    calculate = (parseInt(choices[8])/(something + parseInt(choices[3])*2.7));
+                  }
+                  else{
+                    calculate = (parseInt(choices[8])/(something + parseInt(choices[3])*2.4));
+                  }
+                }
+                else if (choices[1] != "7" && choices[2] == "1"){
+                  if(choices[4] == "1"){
+                    calculate = (parseInt(choices[8])/(something + parseInt(choices[3])*.9));
+                  }
+                  else{
+                    calculate = (parseInt(choices[8])/(something + parseInt(choices[3])*.8));
+                  }
+                }
+                else{
+                  calculate = (parseInt(choices[8])/something);
+                }
+                //for varietry use the split command like "," to get the values before and after
+                calculate = calculate *100
+                document.querySelector('#Data').innerHTML = calculate.toFixed(2) + "% ER is neccesary to get your burst in these conditions";
+                break;
+              case "2":
+                document.querySelector('#Data').innerHTML = " ";
+                calculate = parseInt(choices[8])/(parseInt(choices[7])/100)
+                let allparticlecalcs = [];
+                for (let i = 0; i < part.length; i ++){
+                  allparticlecalcs.push("You will need <z>"+(calculate/part[i]).toFixed(0).toString() + " " + partname[i]+ "</z> particles to get your burst back");
+                  document.querySelector('#Data').innerHTML += allparticlecalcs[i] + "<br>";
+                }
+                break;
+              case "3":
+                let ER = parseInt(choices[7])/100
+              if (choices[1] == "7" && choices[2] == "1"){
+                  if(choices[4] == "1"){
+                    calculate = ((something + parseInt(choices[3])*2.7)*ER);
+                  }
+                  else{
+                    calculate = ((something + parseInt(choices[3])*2.4)*ER);
+                  }
+                }
+                else if (choices[1] != "7" && choices[2] == "1"){
+                  if(choices[4] == "1"){
+                    calculate = ((something + parseInt(choices[3])*.9)*ER);
+                  }
+                  else{
+                    calculate = ((something + parseInt(choices[3])*.8)*ER);
+                  }
+                }
+                else{
+                  calculate = (ER*something);
+                }
+                document.querySelector('#Data').innerHTML = "You will generate " + calculate.toFixed(0) + " for your character"
+                break;
+            }
+          };
+        </script>
+    </head>
+    <body>
+      <div class="m-2 pill-nav">
+        <a href="/index.html">Home</a>
+        <a href="/maina.html">Main account</a>
+        <a href="/alta.html">Alt account</a>
+        <a class = "active" href="/ERCalc.html">ER Calc</a>
+      </div>
+      <p>
+        This is to help you calculate how much ER you need to get your characters burst
+      </p>
+      <center>
+      <p id = "feedback1"></p>
+      <div class = "box" id = "q1" style = "overflow:hidden;">
+        <div class = "Questions">
+          1). Do you want to find the ER required, the amount of particles required or just the general energy you would restore?
+          <br>
+        <button class = "round-button-circle" id = "1 1" onClick="Select(this.id)"><span>Find the ER</span></button>
+        <br><br>
+        <button class = "round-button-circle" id ="1 2" onClick="Select(this.id)"><span>Find the particles</span></button>
+        <br><br>
+        <button class = "round-button-circle" id ="1 3" onClick="Select(this.id)"><span>Find the amount regenerated</span></button>
+        <P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+        </div>
+      </div>
+      <div class = "box" id = "q2" style = "overflow:hidden;">
+        <div class = "Questions">
+          2). What Element is your character?
+          <br>
+          <button class = "round-button-circle" id = "2 1" onClick="Select(this.id)"><span>Anemo</span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "2 2" onClick="Select(this.id)"><span>Dendro</span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "2 3" onClick="Select(this.id)"><span>Geo</span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "2 4" onClick="Select(this.id)"><span>Hydro</span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "2 5" onClick="Select(this.id)"><span>Pyro</span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "2 6" onClick="Select(this.id)"><span>Cryo</span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "2 7" onClick="Select(this.id)"><span>Electro</span></button>
+          <P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+        </div>
+      </div>
+      <div class = "box" id = "q3" style = "overflow:hidden;">
+        <div class = "Questions">
+        3). Are you running electro resonance?
+        </div><br>
+        <button class = "round-button-circle" id = "3 1" onClick="Select(this.id)"><span>Yes</span></button>
+        <br><br><br>
+        <button class = "round-button-circle" id = "3 2" onClick="Select(this.id)"><span>No</span></button>
+        <P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+      </div>
+      <div class = "box" id = "q4" style = "overflow:hidden;">
+        <div class = "Questions">
+          4). How many particles from electro?<br>
+          <d style = "font-size: 90%;">Note: there is a 5 second cooldown after generating one meaning in 10 seconds you can technically get 3</d>
+          <br><br>
+          <input type="number" id = "4 1 t"></input>
+          <P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+        </div>
+      </div>
+      <div class = "box" id = "q5" style = "overflow:hidden;">
+        <div class = "Questions">
+          5). Will your character be on or off field?
+          <br><br>
+          <button class = "round-button-circle" id = "5 1" onClick="Select(this.id)"><span>On-field</span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "5 2" onClick="Select(this.id)"><span>Off-field</span></button>
+          <P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+        </div>
+      </div>
+      <div class = "box" id = "q6" style = "overflow:hidden;">
+        <div class = "Questions">
+          6). Will you generate same or different, or generic type particles or a variety (and how many)?
+          <br><br>
+          <button class = "round-button-circle" id = "6 1" onClick="Select(this.id)"><span>Same <input type="number" id = "6 1 t" placeholder="e.g 1"></input></span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "6 2" onClick="Select(this.id)"><span>Different <input type="number" id = "6 2 t" placeholder="e.g 1"></input></span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "6 3" onClick="Select(this.id)"><span>Generic <input type="number" id = "6 3 t" placeholder="e.g 1"></input></span></button>
+          <br><br>
+          <button class = "round-button-circle" id = "6 4" onClick="Select(this.id)"><span>Variety <input type="text" id = "6 4 t" placeholder="e.g 1,2,3"></input></span></button>
+          <p></p><P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+        </div>
+      </div>
+      <div class = "box" id = "q7" style = "overflow:hidden;">
+        <div class = "Questions">
+          7). What is your ER?
+          <br><br>
+          <input type="number" id = "7 1 t" placeholder="e.g 100"></input>
+          <P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+        </div>
+      </div>
+      <div class = "box" id = "q8" style = "overflow:hidden;">
+        <div class = "Questions">
+          8). What is the energy cost of the burst?
+          <br><br>
+          <input type="number" id = "8 1 t" placeholder="e.g 40-90"></input>
+          <P style="color: #2A0134; font-size:1px;">Sneaky txt just used as filler to make it look cooler</P>
+        </div>
+      </div>
+      <br>
+      <p id = "feedback2"></p>
+      <button class = "calculate" onClick="CheckText()">Calculate!</button>
+      <br><br>
+      <p id = "Data"></p>
+      <br><br>
+    </center></body>
+</html>

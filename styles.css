@@ -33,6 +33,10 @@ b {
     font-size: 200%;
     font-family:verdana;
 }
+z{
+    font-size: 130%;
+    color: #F70000;
+}
 .container {
     position: relative;
     overflow: hidden;
@@ -53,4 +57,54 @@ b {
   .box {
     position: relative;
     overflow: auto;
+    border-width:15px;
+    border-style:solid;
+    border-color:#0B629882;
+    width:80%;
   }
+  .round-button-circle {
+    position: relative;
+    bottom: 100%;
+    right: 30%;
+    padding: 10px;
+    border-radius: 100%;
+    border: 4px solid #98a1a4;
+    overflow: visible;
+    background: transparent; /* Change it to transparent */
+    /* remove background-opacity */
+    box-shadow: 0 0 3px gray;
+    text-align: center;
+  }
+  .round-button-circle:hover {
+    background-color: red;
+  }
+  .round-button-circle:active {
+    background-color: green;
+  }
+  .Questions{
+    font-size: 160%;
+    text-align: center;
+  }
+  span{
+    position: absolute;
+    color: red;
+    /*left: 170%;
+    bottom: -60%;*/
+    font-size: 30px;
+    margin: -23px 0px 0px 20px;
+    white-space: nowrap;
+  }
+  .calculate{
+    background-color:#0B629882;
+    color:white;
+    font-size: 50px;
+    border: none;
+    border-radius: 5%;
+  }
+  .calculate:hover {
+    background-color:white;
+    color:red;
+    font-size: 50px;
+    border: none;
+  }
+
